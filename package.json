@@ -1,0 +1,25 @@
+{
+  "name": "mi-api",
+  "version": "0.0.1",
+  "description": "API con un CRUD que almacena informacion",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "npx nodemon index.js",
+    "debug": "node --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "plain-text",
+    "json"
+  ],
+  "author": "David Lopez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

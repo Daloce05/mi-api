@@ -1,0 +1,25 @@
+{
+            "id": 9,
+            "nombre": "iphone 10s"
+            "almacenamiento": "64gb",
+            "ram": 8.1,
+            "color" : "rojo",
+            "disponibilidad": true,
+            "ubicacion": "bodega",
+            "stock":18
+            
+            
+        }
+
+        {
+            "id": 10,
+            "nombre": "xiaomi 10s",
+            "almacenamiento": "256",
+            "ram": 12.4,
+            "color" : "azul con plateado",
+            "disponibilidad": false,
+            "ubicacion": "tienda",
+            "stock":0
+            
+            
+        }

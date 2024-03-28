@@ -1,11 +1,23 @@
-
-
 const express = require ('express')
 const fs = require('fs')
 const{ readFileSync, escribirarchivo} = require('./files')
 const app = express()
 app.use(express.json())
+const multer = require('multer');
+const upload = multer({dest: 'upload/'});
 
+app.post('/images/single', upload.single('imagenperfil'), (req,res)  => {
+  console.log(req.file);
+   guardarimagen(req.file);
+  res.send('exitoso');
+
+})
+
+function guardarimagen(file){
+  const newpath = `./upload/${file.originalname}`;
+  fs.renameSync(file.path, newpath);
+  return newpath;
+}
   
 
 //ruta home
@@ -61,6 +73,8 @@ app.put('/celulares/:id', (req, res) =>{
     escribirarchivo('./db.json',data);
     res.json({ message: "celular delete successfully" });
   })
+
+
 
 //levantamos el servidor para el puerto 3000
 app.listen(3000, () => {

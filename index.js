@@ -1,6 +1,8 @@
 const express = require ('express')
 const fs = require('fs')
 const{ readFileSync, escribirarchivo} = require('./files')
+const PDFDocument = require('pdfkit');
+
 const app = express()
 app.use(express.json())
 const multer = require('multer');
@@ -13,7 +15,7 @@ app.post('/images/single', upload.single('imagenperfil'), (req,res)  => {
 
 })
 
-function guardarimagen(file){
+function guardarimagen(file){ 
   const newpath = `./upload/${file.originalname}`;
   fs.renameSync(file.path, newpath);
   return newpath;
@@ -74,6 +76,52 @@ app.put('/celulares/:id', (req, res) =>{
     res.json({ message: "celular delete successfully" });
   })
 
+
+
+  function generarPDF(celulares) {
+    return new Promise((resolve, reject) => {
+        // Crea un nuevo documento PDF
+        const doc = new PDFDocument();
+        const buffers = [];
+      
+        // Captura los datos del PDF en un buffer
+        doc.on('data', buffers.push.bind(buffers));
+        doc.on('end', () => {
+            const pdfData = Buffer.concat(buffers);
+            resolve(pdfData);
+        });
+  
+        // Agrega contenido al PDF
+        doc.fontSize(18).text('Lista de celulares', { align: 'center' }).moveDown();
+        celulares.forEach((celular, index) => {
+            doc.fontSize(12).text(`celular ${index + 1}: ${JSON.stringify(celular)}`).moveDown();
+        });
+  
+        // Cierra el documento PDF
+        doc.end();
+    });
+  }
+  
+  // Ruta GET para obtener el PDF con la lista de carros
+  app.get('/lista_celulares.pdf', async (req, res) => {
+    try {
+        // Lee los carros desde el archivo JSON
+        const celulares = readFileSync('./db.json');
+  
+        // Genera el PDF en memoria
+        const pdfData = await generarPDF(celulares);
+  
+        // Configura los encabezados de la respuesta HTTP
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="lista_celulares.pdf"');
+  
+        // Envía el PDF como respuesta HTTP
+        res.end(pdfData);
+    } catch (error) {
+        console.error('Error al generar el PDF:', error);
+        res.status(500).send('Error al generar el PDF');
+    }
+  });
 
 
 //levantamos el servidor para el puerto 3000

@@ -215,6 +215,12 @@ app.put('/celulares/:id', (req, res) => {
 
 
 // 3 punto metodo para actualizar el campo 'updated_at' en todos los registros
+
+// como mandar la peticion http://localhost:3000/celular/cambiar
+
+//se debe poner como comentario el primer put para que funcione el punto 3
+
+
 app.put('/celulares/cambiar', (req, res) => {
   const celulares = readFileSync('./db.json');
 
@@ -235,8 +241,7 @@ app.put('/celulares/cambiar', (req, res) => {
   res.send(celularcambiado);
 });
 
-// como mandar la peticion http://localhost:3000/celular/cambiar
-//se debe poner como comentario el primer put para que funcione el punto 3
+
 
 
 

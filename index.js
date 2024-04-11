@@ -127,7 +127,7 @@ app.post('/celular',usarcreated, (req, res) => {
       // Define las propiedades que esperas en el cuerpo de la solicitud y sus respectivas validaciones
       nombre: Joi.string().required(),
       color: Joi.string().required(),
-       id: Joi.number().required(),
+       
        created_at: Joi.string().required(),
   });
 

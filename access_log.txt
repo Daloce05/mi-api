@@ -44,3 +44,12 @@
 2024-04-11T02:22:30.481Z - POST /celulares/cambiar
 10 04 2024 09:22:49 [POST] /celular {} {"nombre":"celulote","color":"redeee","id":119} ::1
 10 04 2024 09:24:41 [POST] /celular {} {"nombre":"celulote","color":"redeee","id":119} ::1
+10 04 2024 09:32:59 [GET] /celular?filtro=id&valor=1 {"filtro":"id","valor":"1"} {} ::1
+10 04 2024 09:34:05 [GET] /celular?filtro=id&valor=2 {"filtro":"id","valor":"2"} {} ::1
+10 04 2024 09:34:29 [GET] /celular?filtro=id&valor=5 {"filtro":"id","valor":"5"} {} ::1
+10 04 2024 09:39:58 [POST] /celular/12 {} {"nombre":"celucoooo","color":"azul con rojo y verde","id":1} ::1
+2024-04-11T02:39:58.059Z - POST /celular/12
+10 04 2024 09:40:04 [POST] /celular/1 {} {"nombre":"celucoooo","color":"azul con rojo y verde","id":12} ::1
+2024-04-11T02:40:04.425Z - POST /celular/1
+10 04 2024 09:43:53 [POST] /celular {} {"nombre":"celucoooo","color":"azul con rojo y verde","id":12} ::1
+10 04 2024 09:44:32 [POST] /celular {} {"nombre":"celucoooo","color":"azul con rojo y verde"} ::1

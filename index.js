@@ -120,17 +120,15 @@ app.get('/celular', (req, res) => {
 
 
 //store
-// 1 punto metodo para agregar un carro a la lista de carros y validar los datos de entrada con Joi  
+// 1 punto metodo para agregar un celular a la lista de carros y validar los datos de entrada con Joi  
 app.post('/celular',usarcreated, (req, res) => {
   // Definir esquema Joi para validar los datos de entrada
   const schema = Joi.object({
       // Define las propiedades que esperas en el cuerpo de la solicitud y sus respectivas validaciones
-      // Por ejemplo, si esperas propiedades 'marca', 'modelo' y 'año' en el cuerpo de la solicitud:
       nombre: Joi.string().required(),
       color: Joi.string().required(),
        id: Joi.number().required(),
        created_at: Joi.string().required(),
-      // Puedes agregar más validaciones según tus necesidades
   });
 
   // Validar los datos de entrada
@@ -145,17 +143,17 @@ app.post('/celular',usarcreated, (req, res) => {
   // Continuar con el resto del código si los datos son válidos
   const celular = value; // Usamos 'value' que contiene los datos validados
 
-  // Leer la lista de carros desde el archivo
+  // Leer la lista de celulares desde el archivo
   const celulares = readFileSync('./db.json');
 
-  // Agregar el nuevo carro a la lista
-  celular.id = celulares.length + 1; // Asignamos un nuevo ID al carro
+  // Agregar el nuevo celular a la lista
+  celular.id = celulares.length + 1; // Asignamos un nuevo ID al celular
   celulares.push(celular);
 
   // Escribir la lista de carros actualizada en el archivo
   escribirarchivo('./db.json', celulares);
 
-  // Responder con el carro agregado y un código de estado 201 (Created)
+  // Responder con el celular agregado y un código de estado 201 (Created)
   res.status(201).send(celular);
 });
 
@@ -176,7 +174,6 @@ app.put('/celulares/:id', (req, res) => {
   // Definir esquema Joi para validar los datos de entrada
   const schema = Joi.object({
       // Aquí defines las propiedades que esperas en el cuerpo de la solicitud y sus respectivas validaciones
-      // Por ejemplo, si esperas una propiedad 'marca' en el cuerpo de la solicitud:
       nombre: Joi.string().required(),
       color: Joi.string().required(),
        id: Joi.number().required(),
@@ -193,7 +190,6 @@ app.put('/celulares/:id', (req, res) => {
       return;
   }
 
-  // Continuar con el resto del código si los datos son válidos
   const celulares = readFileSync('./db.json');
   const celular = celulares.find(celular => celular.id === parseInt(id));
 
@@ -320,7 +316,6 @@ app.put('/celulares/cambiar', (req, res) => {
         res.status(500).send('Error al generar el PDF');
     }
   });
-
 
 
 

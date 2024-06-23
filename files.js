@@ -1,5 +1,6 @@
 // const { info } = require('console');
 //  const e = require('express');
+//hola mundooo
 const fs = require('fs');
 function readFileSync(path){
     const data = fs.readFileSync(path);

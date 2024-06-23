@@ -53,3 +53,46 @@
 2024-04-11T02:40:04.425Z - POST /celular/1
 10 04 2024 09:43:53 [POST] /celular {} {"nombre":"celucoooo","color":"azul con rojo y verde","id":12} ::1
 10 04 2024 09:44:32 [POST] /celular {} {"nombre":"celucoooo","color":"azul con rojo y verde"} ::1
+17 04 2024 05:41:30 [GET] /celular?filtro=id&valor=2 {"filtro":"id","valor":"2"} {} ::1
+17 04 2024 05:41:40 [GET] /celular?filtro=id&valor=8 {"filtro":"id","valor":"8"} {} ::1
+17 04 2024 05:42:07 [POST] /celular {} {"nombre":"celucoooo","color":"azul con rojo y verde y azul"} ::1
+17 04 2024 05:42:48 [PUT] /celular {} {"nombre":"celulote","color":"colorsito","id":119} ::1
+2024-04-17T22:42:48.070Z - PUT /celular
+17 04 2024 05:43:45 [PUT] /celular {} {"nombre":"celulote","color":"colorsito"} ::1
+2024-04-17T22:43:45.568Z - PUT /celular
+17 04 2024 05:44:41 [PUT] /celular/cambiar {} {"nombre":"celulote","color":"colorsito"} ::1
+2024-04-17T22:44:41.847Z - PUT /celular/cambiar
+17 04 2024 05:44:52 [PUT] /celulares/cambiar {} {"nombre":"celulote","color":"colorsito"} ::1
+17 04 2024 05:45:14 [PUT] /celulares/cambiar {} {"nombre":"celulote","color":"colorsito"} ::1
+17 04 2024 05:45:50 [PUT] /celulares/cambiar {} {"nombre":"celulote","color":"colorsito"} ::1
+17 04 2024 05:46:16 [PUT] /celulares/cambiar {} {"nombre":"celulote","color":"colorsito"} ::1
+17 04 2024 05:46:44 [PUT] /celulares/cambiar {} {"nombre":"celuco","color":"azul con rojo"} ::1
+17 04 2024 05:47:43 [PUT] /celulares/5 {} {"nombre":"celuco","color":"azul con rojo"} ::1
+17 04 2024 05:48:20 [PUT] /celulares/5 {} {"nombre":"celuco","color":"azul con rojo","create at":""} ::1
+17 04 2024 05:48:29 [PUT] /celulares/5 {} {"nombre":"celuco","color":"azul con rojo","created_at":""} ::1
+17 04 2024 05:49:15 [PUT] /celulares/5 {} {"nombre":"celuco","color":"azul con rojo"} ::1
+17 04 2024 06:31:07 [PUT] /celulares/cambiar {} {"nombre":"celuco","color":"azul con rojo"} ::1
+17 04 2024 06:35:28 [PUT] /celulares/cambiar {} {"nombre":"celuco","color":"azul con rojo"} ::1
+17 04 2024 06:35:41 [PUT] /celulares/cambiar {} {"nombre":"celuco","color":"azul con rojo y aguamarina"} ::1
+17 04 2024 06:35:57 [PUT] /celulares/5 {} {"nombre":"celuco","color":"azul con rojo y aguamarina"} ::1
+17 04 2024 06:36:27 [PUT] /celulares/88 {} {"nombre":"celuco","color":"azul con rojo y aguamarina"} ::1
+17 04 2024 06:36:34 [PUT] /celulares/cambiar {} {"nombre":"celuco","color":"azul con rojo y aguamarina"} ::1
+17 04 2024 06:37:21 [PUT] /celulares/cambiar {} {"nombre":"celucocote","color":"holitatata"} ::1
+17 04 2024 06:38:39 [PUT] /celulares/4 {} {"nombre":"celucocote","color":"holitatata"} ::1
+17 04 2024 06:38:54 [PUT] /celulares/cambiar {} {"nombre":"celucocote","color":"holitatata"} ::1
+17 04 2024 06:40:50 [PUT] /celulares/cambiar {} {"nombre":"celucocote","color":"holitatata","updated_at":"2024-04-10 06:40"} ::1
+17 04 2024 06:41:28 [PUT] /celulares/cambiar {} {"nombre":"celucocote","color":"holitatata"} ::1
+17 04 2024 06:42:13 [PUT] /celulares/2 {} {"nombre":"iphone david ","color":"moradito bonito"} ::1
+17 04 2024 06:42:31 [PUT] /celulares/cambiar {} {"nombre":"iphone david ","color":"moradito bonito"} ::1
+17 04 2024 06:49:30 [POST] /celular {} {"nombre":"iphone pepito","color":"transparente"} ::1
+17 04 2024 06:49:39 [GET] /celular?filtro=id&valor=2 {"filtro":"id","valor":"2"} {} ::1
+17 04 2024 06:49:44 [GET] /celular?filtro=id&valor=23 {"filtro":"id","valor":"23"} {} ::1
+17 04 2024 06:49:52 [PUT] /celulares/cambiar {} {"nombre":"iphone david ","color":"moradito bonito"} ::1
+17 04 2024 06:49:55 [GET] /celular?filtro=id&valor=23 {"filtro":"id","valor":"23"} {} ::1
+17 04 2024 06:50:55 [GET] /celular?filtro=id&valor=23 {"filtro":"id","valor":"23"} {} ::1
+17 04 2024 06:51:00 [GET] /celular?filtro=id&valor=19 {"filtro":"id","valor":"19"} {} ::1
+17 04 2024 06:51:09 [DELETE] /celulares/19 {} {} ::1
+17 04 2024 06:51:16 [GET] /celular?filtro=id&valor=19 {"filtro":"id","valor":"19"} {} ::1
+17 04 2024 06:51:25 [GET] /celular?filtro=id&valor=18 {"filtro":"id","valor":"18"} {} ::1
+17 04 2024 06:51:50 [GET] /celular?filtro=id&valor=18 {"filtro":"id","valor":"18"} {} ::1
+17 04 2024 06:52:01 [GET] /celular?filtro=id&valor=18 {"filtro":"id","valor":"18"} {} ::1

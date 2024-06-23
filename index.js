@@ -12,8 +12,8 @@ const viewsPath = path.join(__dirname, 'src', 'views');
 const publicPath = path.join(__dirname, 'src', 'public');
 app.use(express.json()); 
 
-const multer = require('multer');
-const upload = multer({dest: 'upload/'});
+// const multer = require('multer');
+// const upload = multer({dest: 'upload/'});
 
 
 
@@ -28,20 +28,20 @@ const usarcreated = (req, res, next) => {
 
 
 
-//post de la libreria multer 
-app.post('/images/single', upload.single('imagenperfil'), (req,res)  => {
-  console.log(req.file);
-   guardarimagen(req.file);
-  res.send('exitoso');
+// //post de la libreria multer 
+// app.post('/images/single', upload.single('imagenperfil'), (req,res)  => {
+//   console.log(req.file);
+//    guardarimagen(req.file);
+//   res.send('exitoso');
 
-})
+// })
 
-//funcion libreria multer 
-function guardarimagen(file){ 
-  const newpath = `./upload/${file.originalname}`;
-  fs.renameSync(file.path, newpath);
-  return newpath;
-}
+// //funcion libreria multer 
+// function guardarimagen(file){ 
+//   const newpath = `./upload/${file.originalname}`;
+//   fs.renameSync(file.path, newpath);
+//   return newpath;
+// }
   
 
 
@@ -65,9 +65,6 @@ function solicitud(req, res, next) {
 }
 
 app.use(solicitud);
-
-
-
 
 
 
@@ -164,6 +161,44 @@ app.post('/celular',usarcreated, (req, res) => {
 
 
 
+// 3 punto metodo para actualizar el campo 'updated_at' en todos los registros
+
+// como mandar la peticion http://localhost:3000/celular/cambiar
+
+// se debe poner como comentario el primer put para que funcione el punto 3
+
+
+app.put('/celulares/cambiar', (req, res) => {
+  const celulares = readFileSync('./db.json');
+
+  // Obtener la fecha y hora actual en formato YYYY-MM-DD hh:mm
+  const fechahoy = moment().format('YYYY-MM-DD hh:mm');
+
+  // Recorrer todos los registros y actualizar el campo 'updated_at' si está vacío
+  const celularcambiado = celulares.map(celular => {
+    if (!celular.updated_at) {
+      celular.updated_at = fechahoy;
+    }
+    return celular;
+  });
+
+  // Escribir en el archivo
+  escribirarchivo('./db.json', celularcambiado);
+
+  res.send(celularcambiado);
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //ejercicio 1
@@ -176,8 +211,8 @@ app.put('/celulares/:id', (req, res) => {
       // Aquí defines las propiedades que esperas en el cuerpo de la solicitud y sus respectivas validaciones
       nombre: Joi.string().required(),
       color: Joi.string().required(),
-       id: Joi.number().required(),
-       created_at: Joi.string().required(),
+       
+       created_at: Joi.string(),
       // Puedes agregar más validaciones según tus necesidades
   });
 
@@ -214,31 +249,19 @@ app.put('/celulares/:id', (req, res) => {
 
 
 
-// 3 punto metodo para actualizar el campo 'updated_at' en todos los registros
 
-// como mandar la peticion http://localhost:3000/celular/cambiar
+// 4 punto Middleware para registrar las solicitudes HTTP en el archivo access_log.txt
+app.use((req, res, next) => {
+  const logLine = `${new Date().toISOString()} - ${req.method} ${req.url}\n`;
 
-//se debe poner como comentario el primer put para que funcione el punto 3
-
-
-app.put('/celulares/cambiar', (req, res) => {
-  const celulares = readFileSync('./db.json');
-
-  // Obtener la fecha y hora actual en formato YYYY-MM-DD hh:mm
-  const fechahoy = moment().format('YYYY-MM-DD hh:mm');
-
-  // Recorrer todos los registros y actualizar el campo 'updated_at' si está vacío
-  const celularcambiado = celulares.map(celular => {
-    if (!celular.updated_at) {
-      celular.updated_at = fechahoy;
+  // Agregar la línea al archivo access_log.txt
+  fs.appendFile('access_log.txt', logLine, (err) => {
+    if (err) {
+      console.error('Error al escribir en el archivo access_log.txt:', err);
     }
-    return celular;
   });
 
-  // Escribir en el archivo
-  escribirarchivo('./db.json', celularcambiado);
-
-  res.send(celularcambiado);
+  next();
 });
 
 
@@ -252,14 +275,6 @@ app.put('/celulares/cambiar', (req, res) => {
 
 
 
-
-
-
-
-
-
-
-  
   app.delete('/celulares/:id', (req, res) =>{
     const data = readFileSync('./db.json');
     const id = parseInt(req.params.id);
@@ -326,19 +341,7 @@ app.put('/celulares/cambiar', (req, res) => {
 
 
 
-  // 4 punto Middleware para registrar las solicitudes HTTP en el archivo access_log.txt
-app.use((req, res, next) => {
-  const logLine = `${new Date().toISOString()} - ${req.method} ${req.url}\n`;
-
-  // Agregar la línea al archivo access_log.txt
-  fs.appendFile('access_log.txt', logLine, (err) => {
-    if (err) {
-      console.error('Error al escribir en el archivo access_log.txt:', err);
-    }
-  });
-
-  next();
-});
+  
 
 //levantamos el servidor para el puerto 3000
 app.listen(3000, () => {

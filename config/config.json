@@ -1,0 +1,10 @@
+
+{
+    "development": {
+      "username": "postgres",
+      "password": "daloce05",
+      "database": "DB_PROYECTO_WEB",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    }
+  }

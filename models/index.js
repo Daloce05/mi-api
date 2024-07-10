@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize({
   dialect: 'postgres',
   dialectOptions: {
@@ -11,7 +11,6 @@ const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-
-db.Celular = require('./celulares')(sequelize, Sequelize);    // Nuevo modelo de carros
+db.Celular = require('./celulares')(sequelize, DataTypes);
 
 module.exports = db;

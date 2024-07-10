@@ -1,6 +1,5 @@
 const express = require ('express')
 const app = express()
-const{ readFileSync, escribirarchivo} = require('./files')
 const path = require('path');
 const routesCel = require('./routes/rutas-celular'); // Importa las rutas de los carros
 const db = require('./models');
